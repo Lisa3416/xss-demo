@@ -21,7 +21,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
         if (name) {
-            document.write('<p id="result">' + name + '</p>');
+            document.getElementById('result').innerHTML = name;
         }
     </script>
 </body>
