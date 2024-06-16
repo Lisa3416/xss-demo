@@ -2,27 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XSS Demo</title>
 </head>
 <body>
     <h1>XSS Demo</h1>
-    <form action="#" method="get">
+    <form action="" method="GET">
         <label for="name">Enter your name:</label>
         <input type="text" id="name" name="name">
         <input type="submit" value="Submit">
     </form>
-
-    <div id="output"></div>
+    <div>
+        <h2>Result:</h2>
+        <p id="result"></p>
+    </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
         if (name) {
-            document.getElementById('output').innerHTML = `Hello, ${name}`;
-            // XSS payload để hiển thị cookie
-            if (name.includes("<script>")) {
-                alert(`Your cookies: ${document.cookie}`);
-            }
+            document.getElementById('result').innerHTML = name;
         }
     </script>
 </body>
